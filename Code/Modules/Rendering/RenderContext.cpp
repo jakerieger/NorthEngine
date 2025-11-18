@@ -2,10 +2,6 @@
 // Created: 11/18/25.
 //
 
-// VMA Implementation
-// Must be defined in exactly one .cpp file before including vk_mem_alloc.h
-#define VMA_IMPLEMENTATION
-
 #include "RenderContext.hpp"
 #include <iostream>
 #include <cstring>
@@ -111,7 +107,7 @@ namespace North {
         renderPassInfo.renderArea.offset = {0, 0};
         renderPassInfo.renderArea.extent = mSwapchainExtent;
 
-        VkClearValue clearColor        = {{{0.1f, 0.2f, 0.3f, 1.0f}}};
+        VkClearValue clearColor        = {{{0.01f, 0.01f, 0.01f, 1.0f}}};
         renderPassInfo.clearValueCount = 1;
         renderPassInfo.pClearValues    = &clearColor;
 
