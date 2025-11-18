@@ -1,0 +1,11 @@
+.idea/
+.vs/
+.vscode/
+build/
+out/
+**/*.exe
+**/*.bin
+**/*.lib
+**/*.dll
+**/*.so
+**/*.a
