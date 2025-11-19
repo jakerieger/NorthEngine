@@ -18,23 +18,22 @@ namespace North {
         void OnAwake() override {
             u32 width, height;
             GetWindowDimensions(width, height);
-            mRenderContext.Initialize(GetWindow(), width, height);
+            mGame.Initialize(GetWindow(), width, height);
         }
 
         void OnDestroy() override {
-            mRenderContext.Shutdown();
+            mGame.Shutdown();
         }
 
         void OnRender() override {
-            mRenderContext.DrawFrame();
+            mGame.RequestFrame();
         }
 
         void OnResize(u32 width, u32 height) override {
-            mRenderContext.Resize(width, height);
+            mGame.Resize(width, height);
         }
 
     private:
         Game mGame;
-        RenderContext mRenderContext;
     };
 }  // namespace North

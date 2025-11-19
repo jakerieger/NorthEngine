@@ -8,5 +8,27 @@
 #include "Rendering/RenderContext.hpp"
 
 namespace North {
-    class Game {};
+    class Game {
+    public:
+        Game() = default;
+
+        void Initialize(GLFWwindow* window, u32 width, u32 height) {
+            mRenderContext.Initialize(window, width, height);
+        }
+
+        void Shutdown() {
+            mRenderContext.Shutdown();
+        }
+
+        void RequestFrame() {
+            mRenderContext.DrawFrame();
+        }
+
+        void Resize(u32 width, u32 height) {
+            mRenderContext.Resize(width, height);
+        }
+
+    private:
+        RenderContext mRenderContext;
+    };
 }  // namespace North

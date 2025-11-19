@@ -5,9 +5,13 @@
 #include <Platform/GameApplication.hpp>
 
 namespace North {
-    class SandboxApp : public GameApplication {
+    class SandboxApp final : public GameApplication {
     public:
-        SandboxApp() : GameApplication("Sandbox", 800, 600) {}
+        SandboxApp() : GameApplication("Sandbox") {}
+
+        void OnKeyPress(u32 keyCode) override {
+            if (keyCode == GLFW_KEY_ESCAPE) { Quit(); }
+        }
     };
 }  // namespace North
 
