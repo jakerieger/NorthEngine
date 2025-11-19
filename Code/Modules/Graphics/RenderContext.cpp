@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cstring>
 
-namespace North {
+namespace North::Graphics {
     void RenderContext::Initialize(GLFWwindow* window, u32 width, u32 height) {
         mWidth  = width;
         mHeight = height;
@@ -453,4 +453,4 @@ namespace North {
             mSwapchain = VK_NULL_HANDLE;
         }
     }
-}  // namespace North
+}  // namespace North::Graphics

@@ -3,14 +3,15 @@
 //
 
 #include <Platform/GameApplication.hpp>
+#include <Input/InputCodes.hpp>
 
 namespace North {
-    class SandboxApp final : public GameApplication {
+    class SandboxApp final : public Platform::GameApplication {
     public:
         SandboxApp() : GameApplication("Sandbox") {}
 
         void OnKeyPress(u32 keyCode) override {
-            if (keyCode == GLFW_KEY_ESCAPE) { Quit(); }
+            if (keyCode == Input::Keys::Escape) { Quit(); }
         }
     };
 }  // namespace North

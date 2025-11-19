@@ -5,30 +5,26 @@
 #pragma once
 
 #include "Common/Common.hpp"
-#include "Rendering/RenderContext.hpp"
+#include "Graphics/RenderContext.hpp"
 
-namespace North {
+namespace North::Engine {
     class Game {
     public:
         Game() = default;
 
-        void Initialize(GLFWwindow* window, u32 width, u32 height) {
-            mRenderContext.Initialize(window, width, height);
-        }
+        void Initialize(GLFWwindow* window, u32 width, u32 height);
+        void Shutdown();
+        void RequestFrame();
+        void Resize(u32 width, u32 height);
 
-        void Shutdown() {
-            mRenderContext.Shutdown();
-        }
+        NE_ND bool Initialized() const;
 
-        void RequestFrame() {
-            mRenderContext.DrawFrame();
-        }
-
-        void Resize(u32 width, u32 height) {
-            mRenderContext.Resize(width, height);
-        }
+        void Awake();
+        void Update(f32 dT);
+        void LateUpdate();
+        void Destroyed();
 
     private:
-        RenderContext mRenderContext;
+        Graphics::RenderContext mRenderContext;
     };
-}  // namespace North
+}  // namespace North::Engine

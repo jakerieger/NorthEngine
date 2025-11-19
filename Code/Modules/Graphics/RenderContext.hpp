@@ -11,7 +11,7 @@
 #include <VkBootstrap.h>
 #include <GLFW/glfw3.h>
 
-namespace North {
+namespace North::Graphics {
     class RenderContext {
     public:
         RenderContext() = default;
@@ -22,7 +22,7 @@ namespace North {
         void DrawFrame();
         void Resize(u32 width, u32 height);
 
-        NE_ND bool IsInitialized() const {
+        NE_ND bool Initialized() const {
             return mInitialized;
         }
 
@@ -87,4 +87,4 @@ namespace North {
         // Debug messenger
         VkDebugUtilsMessengerEXT mDebugMessenger = VK_NULL_HANDLE;
     };
-}  // namespace North
+}  // namespace North::Graphics

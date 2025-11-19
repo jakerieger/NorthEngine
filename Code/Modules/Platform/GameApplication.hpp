@@ -7,7 +7,7 @@
 #include "Application.hpp"
 #include "Engine/Game.hpp"
 
-namespace North {
+namespace North::Platform {
     class GameApplication : public IApplication {
     public:
         explicit GameApplication(const string& title, u32 width = kDefaultWidth, u32 height = kDefaultHeight)
@@ -15,25 +15,14 @@ namespace North {
 
         ~GameApplication() override = default;
 
-        void OnAwake() override {
-            u32 width, height;
-            GetWindowDimensions(width, height);
-            mGame.Initialize(GetWindow(), width, height);
-        }
-
-        void OnDestroy() override {
-            mGame.Shutdown();
-        }
-
-        void OnRender() override {
-            mGame.RequestFrame();
-        }
-
-        void OnResize(u32 width, u32 height) override {
-            mGame.Resize(width, height);
-        }
+        void OnAwake() override;
+        void OnDestroy() override;
+        void OnUpdate(f32 dT) override;
+        void OnRender() override;
+        void OnLateUpdate() override;
+        void OnResize(u32 width, u32 height) override;
 
     private:
-        Game mGame;
+        Engine::Game mGame;
     };
-}  // namespace North
+}  // namespace North::Platform

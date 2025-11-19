@@ -25,5 +25,24 @@ FetchContent_Declare(
         GIT_TAG v3.1.0
 )
 
+FetchContent_Declare(
+        glm
+        GIT_REPOSITORY https://github.com/g-truc/glm.git
+        GIT_TAG 1.0.2
+)
+
+FetchContent_Declare(
+        pugixml
+        GIT_REPOSITORY https://github.com/zeux/pugixml.git
+        GIT_TAG v1.15
+)
+
 message(STATUS "Fetching dependencies... (this may take a moment on first build)")
-FetchContent_MakeAvailable(glfw vk-bootstrap vma)
+
+FetchContent_MakeAvailable(
+        glfw
+        vk-bootstrap
+        vma
+        glm
+        pugixml
+)

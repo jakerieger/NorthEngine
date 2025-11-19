@@ -11,7 +11,7 @@
 
 struct GLFWwindow;
 
-namespace North {
+namespace North::Platform {
     class IApplication {
     public:
         static constexpr u32 kDefaultWidth  = 1280;
@@ -68,4 +68,4 @@ namespace North {
         static void CursorPosCallback(GLFWwindow* window, f64 xpos, f64 ypos);
         static void FramebufferSizeCallback(GLFWwindow* window, i32 width, i32 height);
     };
-}  // namespace North
+}  // namespace North::Platform

@@ -10,6 +10,10 @@
 #include <memory>
 #include <filesystem>
 #include <optional>
+#include <glm/vec2.hpp>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
 
 namespace North {
     using u8   = uint8_t;
@@ -41,4 +45,9 @@ namespace North {
     using std::vector;
     using std::weak_ptr;
     namespace fs = std::filesystem;
+
+    using Vec2   = glm::vec2;
+    using Vec3   = glm::vec3;
+    using Vec4   = glm::vec4;
+    using Mat4x4 = glm::mat4x4;
 }  // namespace North

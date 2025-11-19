@@ -6,7 +6,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace North {
+namespace North::Platform {
     i32 IApplication::Run() {
         Initialize();
         OnAwake();
@@ -120,4 +120,4 @@ namespace North {
             app->OnResize(width, height);
         }
     }
-}  // namespace North
+}  // namespace North::Platform
