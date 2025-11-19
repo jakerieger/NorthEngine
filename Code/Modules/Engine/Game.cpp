@@ -7,13 +7,19 @@
 namespace North::Engine {
     void Game::Initialize(GLFWwindow* window, u32 width, u32 height) {
         mRenderContext.Initialize(window, width, height);
+        mActiveScene = make_unique<Scene>();
     }
 
     void Game::Shutdown() {
+        mActiveScene.reset();
         mRenderContext.Shutdown();
     }
 
     void Game::RequestFrame() {
+        // auto frameData = mRenderContext.BeginFrame();
+        mActiveScene->Draw(mRenderContext);
+        // mRenderContext.EndFrame(frameData);
+
         mRenderContext.DrawFrame();
     }
 
@@ -26,18 +32,18 @@ namespace North::Engine {
     }
 
     void Game::Awake() {
-        // TODO: Call Awake() on script(s) of scene entities
+        mActiveScene->Awake();
     }
 
     void Game::Update(f32 dT) {
-        // TODO: Call Update() on script(s) of scene entities
+        mActiveScene->Update(dT);
     }
 
     void Game::LateUpdate() {
-        // TODO: Call LateUpdate() on script(s) of scene entities
+        mActiveScene->LateUpdate();
     }
 
     void Game::Destroyed() {
-        // TODO: Call Destroyed() on script(s) of scene entities
+        mActiveScene->Destroyed();
     }
-}  // namespace North
+}  // namespace North::Engine

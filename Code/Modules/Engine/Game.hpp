@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "Scene.hpp"
 #include "Common/Common.hpp"
 #include "Graphics/RenderContext.hpp"
 
@@ -26,5 +27,6 @@ namespace North::Engine {
 
     private:
         Graphics::RenderContext mRenderContext;
+        unique_ptr<Scene> mActiveScene;
     };
 }  // namespace North::Engine
