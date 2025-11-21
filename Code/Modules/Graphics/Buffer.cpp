@@ -22,10 +22,8 @@ namespace North::Graphics {
 
     Buffer& Buffer::operator=(Buffer&& other) noexcept {
         if (this != &other) {
-            // Clean up our existing resources
             Destroy();
 
-            // Take ownership of other's resources
             mAllocator   = other.mAllocator;
             mBuffer      = other.mBuffer;
             mAllocation  = other.mAllocation;
@@ -34,7 +32,6 @@ namespace North::Graphics {
             mMemoryUsage = other.mMemoryUsage;
             mMappedData  = other.mMappedData;
 
-            // Reset the source object
             other.mBuffer     = VK_NULL_HANDLE;
             other.mAllocation = VK_NULL_HANDLE;
             other.mMappedData = nullptr;
@@ -125,7 +122,7 @@ namespace North::Graphics {
         // If buffer is already mapped (persistent mapping), use that pointer
         if (mMappedData != nullptr) {
             // Simple memcpy to mapped memory
-            memcpy(static_cast<u8*>(mMappedData) + offset, data, size);
+            memcpy(CAST<u8*>(mMappedData) + offset, data, size);
 
             // Flush the memory range to make it visible to GPU
             // This is needed for non-coherent memory (most cases)
@@ -134,7 +131,7 @@ namespace North::Graphics {
             // Temporarily map, copy, unmap
             void* mappedData = Map();
             if (mappedData) {
-                memcpy(static_cast<u8*>(mappedData) + offset, data, size);
+                memcpy(CAST<u8*>(mappedData) + offset, data, size);
                 Unmap();
             }
         }
